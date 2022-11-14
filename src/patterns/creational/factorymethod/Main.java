@@ -21,8 +21,11 @@ public class Main {
     }
 
     static void configure() {
-        transport = favoriteAniaml.equals("Rabbit") ?
-                new RabbitTransport() : new TurtleTransport();
+        transport = switch (favoriteAniaml) {
+            case "Rabbit" -> new RabbitTransport();
+            case "Turtle" -> new TurtleTransport();
+            default -> null;
+        };
     }
 
     static void runLogic() {
